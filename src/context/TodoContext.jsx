@@ -2,15 +2,10 @@ import { createContext, useState } from "react";
 const TodoListCotext = createContext();
 
 const TodoListProvider = ({ children }) => {
-  const [todo, setTodo] = useState({
-    todo: "",
-    start: "",
-    end: "",
-    completed: false,
-  });
-  const addToDo = (newTodo) => setTodo(newTodo);
+  const [todos, setTodo] = useState([]);
+  const addToDo = (newTodo) => setTodo([...todos, newTodo]);
   return (
-    <TodoListCotext.Provider value={{ todo, setTodo, addToDo }}>
+    <TodoListCotext.Provider value={{ todos, setTodo, addToDo }}>
       {children}
     </TodoListCotext.Provider>
   );
