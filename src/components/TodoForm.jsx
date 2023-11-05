@@ -46,6 +46,14 @@ function TodoForm() {
     setTodo(updateTodo);
     saveTodoLocalStorage(updateTodo);
   };
+  const sortedTodoByDate = (todos) => {
+    return todos.slice().sort((a, b) => {
+      const dataA = new Date(a.day);
+      const dataB = new Date(b.day);
+      return dataA - dataB;
+    });
+  };
+  const sortedTodo = sortedTodoByDate(todos);
   return (
     <>
       <div>
@@ -77,7 +85,7 @@ function TodoForm() {
             </tr>
           </thead>
           <tbody>
-            {todos.map((todo, index) => (
+            {sortedTodo.map((todo, index) => (
               <tr
                 className="active-row"
                 key={index}
