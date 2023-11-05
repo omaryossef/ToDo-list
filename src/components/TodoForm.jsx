@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { TodoListCotext } from "../context/TodoContext";
 import "./todoForm.css";
 import "./form.css";
-import { json } from "react-router-dom";
 
 function TodoForm() {
   const { todos, setTodo, addToDo } = useContext(TodoListCotext);
