@@ -32,9 +32,10 @@ label {
   border-color: #007bff;
 }
 
+button,
 input[type="submit"] {
-  background-color: white;
-  color: #009879;
+  background-color: rgb(189, 44, 44);
+  color: #f1f3f3;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -47,3 +48,5 @@ input[type="submit"]:hover {
   background-color: #013c36;
   color: white;
 }
+
+

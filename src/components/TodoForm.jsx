@@ -4,7 +4,7 @@ import "./todoForm.css";
 import "./form.css";
 
 function TodoForm() {
-  const { todos, setTodo, addToDo } = useContext(TodoListCotext);
+  const { todos, setTodo, addToDo, removeTodo } = useContext(TodoListCotext);
   const [newTodo, setNewTodo] = useState();
   const saveTodoLocalStorage = (todos) => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -69,10 +69,11 @@ function TodoForm() {
           <thead>
             <tr>
               <th scope="col">Todo</th>
-              <th scope="col">day</th>
-              <th scope="col">von</th>
-              <th scope="col">bis</th>
-              <th scope="col">completed</th>
+              <th scope="col">Day</th>
+              <th scope="col">Von</th>
+              <th scope="col">Bis</th>
+              <th scope="col">Completed</th>
+              <th scope="col">Finished</th>
             </tr>
           </thead>
           <tbody>
@@ -89,15 +90,20 @@ function TodoForm() {
                 <td>{todo.day}</td>
                 <td>{todo.start}</td>
                 <td>{todo.end}</td>
-                {
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={todo.completed}
-                      onChange={() => checkBoxChange(todo.todo)}
-                    />
-                  </td>
-                }
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => checkBoxChange(todo.todo)}
+                  />
+                </td>
+                <td>
+                  {todo.completed && (
+                    <button onClick={() => removeTodo(todo.todo)}>
+                      remove
+                    </button>
+                  )}{" "}
+                </td>
               </tr>
             ))}
           </tbody>
