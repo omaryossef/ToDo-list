@@ -99,7 +99,11 @@ function TodoForm() {
                 </td>
                 <td>
                   {todo.completed && (
-                    <button onClick={() => removeTodo(todo.todo)}>
+                    <button
+                      onClick={() =>
+                        removeTodo(todo.todo) && localStorage.clear()
+                      }
+                    >
                       remove
                     </button>
                   )}{" "}
