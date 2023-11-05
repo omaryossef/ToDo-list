@@ -60,7 +60,7 @@ function TodoForm() {
         <form onSubmit={handelSubmited}>
           <label htmlFor="todo">Todo: </label>
           <input className="todo-input" type="text" name="todo" />
-          <label htmlFor="day">Todo: </label>
+          <label htmlFor="day">Day: </label>
           <input className="todo-input" type="date" name="day" />
           <br />
           <label htmlFor="start">Von: </label>
