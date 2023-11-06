@@ -4,8 +4,8 @@ const TodoListCotext = createContext();
 const TodoListProvider = ({ children }) => {
   const [todos, setTodo] = useState([]);
   const addToDo = (newTodo) => setTodo([...todos, newTodo]);
-  const removeTodo = (todoName) => {
-    const removedTodo = todos.filter((todo) => todo.todo !== todoName);
+  const removeTodo = (todoId) => {
+    const removedTodo = todos.filter((todo) => todo.id !== todoId);
     setTodo(removedTodo);
     localStorage.clear();
   };

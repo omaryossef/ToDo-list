@@ -16,9 +16,11 @@ function TodoForm() {
     const start = MyForm.get("start");
     const end = MyForm.get("end");
     const day = MyForm.get("day");
-    if (todo !== "" && day !== "" && start !== "" && end !== "") {
+    const id = todos.length + 1;
+    if (todo.trim() !== "" && day !== "" && start !== "" && end !== "") {
       const newTodo = {
         todo: todo,
+        id: id,
         day: day,
         start: start,
         end: end,
@@ -36,9 +38,9 @@ function TodoForm() {
       setTodo(getTodo);
     }
   }, [setTodo]);
-  const checkBoxChange = (todoName) => {
+  const checkBoxChange = (todoId) => {
     const updateTodo = todos.map((todo) => {
-      if (todo.todo === todoName) {
+      if (todo.id === todoId) {
         todo.completed = !todo.completed;
       }
       return todo;
@@ -85,10 +87,10 @@ function TodoForm() {
             </tr>
           </thead>
           <tbody>
-            {sortedTodo.map((todo, index) => (
+            {sortedTodo.map((todo) => (
               <tr
                 className="active-row"
-                key={index}
+                key={todo.id}
                 style={{
                   textDecoration: todo.completed ? "line-through" : "none",
                   color: todo.completed ? "red" : "",
@@ -102,14 +104,12 @@ function TodoForm() {
                   <input
                     type="checkbox"
                     checked={todo.completed}
-                    onChange={() => checkBoxChange(todo.todo)}
+                    onChange={() => checkBoxChange(todo.id)}
                   />
                 </td>
                 <td>
                   {todo.completed && (
-                    <button onClick={() => removeTodo(todo.todo)}>
-                      remove
-                    </button>
+                    <button onClick={() => removeTodo(todo.id)}>remove</button>
                   )}{" "}
                 </td>
               </tr>
